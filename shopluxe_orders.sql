@@ -1,0 +1,72 @@
+-- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
+--
+-- Host: localhost    Database: shopluxe
+-- ------------------------------------------------------
+-- Server version	8.0.33
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `orders`
+--
+
+DROP TABLE IF EXISTS `orders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `orders` (
+  `id` bigint NOT NULL,
+  `created_at` datetime(6) DEFAULT NULL,
+  `delivery_date` datetime(6) DEFAULT NULL,
+  `discounte` int DEFAULT NULL,
+  `order_date` datetime(6) DEFAULT NULL,
+  `order_id` varchar(255) DEFAULT NULL,
+  `order_status` varchar(255) DEFAULT NULL,
+  `payment_id` varchar(255) DEFAULT NULL,
+  `payment_method` varchar(255) DEFAULT NULL,
+  `razorpay_payment_id​` varchar(255) DEFAULT NULL,
+  `razorpay_payment_link_id` varchar(255) DEFAULT NULL,
+  `razorpay_payment_link_reference_id` varchar(255) DEFAULT NULL,
+  `razorpay_payment_link_status` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `total_discounted_price` int DEFAULT NULL,
+  `total_item` int NOT NULL,
+  `total_price` double NOT NULL,
+  `shipping_address_id` bigint DEFAULT NULL,
+  `user_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_sdv8vvdhj9gxm0dfoeh2rqvkh` (`shipping_address_id`),
+  KEY `FKel9kyl84ego2otj2accfd8mr7` (`user_id`),
+  CONSTRAINT `FKel9kyl84ego2otj2accfd8mr7` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  CONSTRAINT `FKh0uue95ltjysfmkqb5abgk7tj` FOREIGN KEY (`shipping_address_id`) REFERENCES `address` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orders`
+--
+
+LOCK TABLES `orders` WRITE;
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (1,'2023-08-31 14:56:46.447300',NULL,6500,'2023-08-31 14:56:46.447300',NULL,'DELIVERED','pay_MWcriMzjv0egw7',NULL,NULL,NULL,NULL,NULL,'COMPLETED',6995,5,13495,1,4),(2,'2023-08-31 15:04:56.956590',NULL,1234,'2023-08-31 15:04:56.956590',NULL,'SHIPPED','pay_MWczmt8cDTAwfS',NULL,NULL,NULL,NULL,NULL,'COMPLETED',265,1,1499,2,4),(3,'2023-08-31 15:18:53.798786',NULL,6800,'2023-08-31 15:18:53.798786',NULL,'DELIVERED','pay_MWdF5FIVKN7p56',NULL,NULL,NULL,NULL,NULL,'COMPLETED',3196,4,9996,3,5),(52,'2023-08-31 16:21:37.523059',NULL,1234,'2023-08-31 16:21:37.523059',NULL,'PENDING',NULL,NULL,NULL,NULL,NULL,NULL,'PENDING',265,1,1499,52,5),(102,'2023-08-31 17:20:39.096804',NULL,36,'2023-08-31 17:20:39.096804',NULL,'PLACED','pay_MWfJJC1NFDhXA0',NULL,NULL,NULL,NULL,NULL,'COMPLETED',597,3,633,102,5),(103,'2023-08-31 17:25:02.349710',NULL,48,'2023-08-31 17:25:02.349710',NULL,'PENDING',NULL,NULL,NULL,NULL,NULL,NULL,'PENDING',796,4,844,103,5),(152,'2023-09-03 12:05:19.556201',NULL,570,'2023-09-03 12:05:19.556201',NULL,'DELIVERED','pay_MXlYQmsqD0qGpH',NULL,NULL,NULL,NULL,NULL,'COMPLETED',429,1,999,152,5);
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2023-10-27  0:04:31
